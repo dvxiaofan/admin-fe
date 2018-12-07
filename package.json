@@ -1,0 +1,8 @@
+{
+  "name": "admin-fe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitee.com:xiofanxmall/admin-fe.git",
+  "author": "xiaofan <1353815633@qq.com>",
+  "license": "MIT"
+}

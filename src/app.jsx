@@ -2,34 +2,52 @@
  * @Author: xiaofan
  * @Date: 2018-12-07 23:49:58
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-17 22:30:27
+ * @Last Modified time: 2018-12-17 22:44:15
  */
 
 import React from "react";
 import ReactDOM from "react-dom";
 
 class Component extends React.Component {
-	// props 只读
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			name: 'xiaofan'
+			name: "again",
+			age: 18
 		}
+
+		// 绑定this
+		// this.handleClick = this.handleClick.bind(this);
+	}
+
+	render() {
+		return (
+			<div>
+				<h1>this is { this.state.name }</h1>
+				<p>age: {this.state.age}</p>
+				<button onClick={(e) => {this.handleClick(e)}}>add</button>
+				<input type="text" onChange={(e) => {this.onValueChange(e)}}/>
+			</div>
+		);
+	}
+
+	handleClick() {
+		this.setState({
+			age: this.state.age + 1
+		})
 	}
 	
-	render() {
-		setTimeout(() => {
-			this.setState({
-				name: 'xiaofan 2000'
-			})
-		}, 2000);
-		return <h2>{this.state.name} and {this.props.name}</h2>
+	onValueChange(e) {
+		this.setState({
+			age: e.target.value
+		})
 	}
+
+
 }
 
 ReactDOM.render(
-	<div>
-		<Component name="mingming" />
-	</div>,
-	document.getElementById("app")
+	<Component />,
+	document.getElementById('app')
 );

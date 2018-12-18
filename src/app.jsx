@@ -2,62 +2,36 @@
  * @Author: xiaofan
  * @Date: 2018-12-07 23:49:58
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-17 22:47:04
+ * @Last Modified time: 2018-12-18 21:07:58
  */
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Redirect, Route, Link } from "react-router-dom";
 
-class Component extends React.Component {
-	constructor(props) {
-		super(props);
+// 页面
+import Home from 'page/home/index.jsx';
 
-		this.state = {
-			name: "again",
-			age: 18
-		}
-
-		// 绑定this
-		// this.handleClick = this.handleClick.bind(this);
-	}
-
-	render() {
-		return (
-			<div>
-				<h1>this is { this.state.name }</h1>
-				<p>age: { this.state.age }</p>
-				<button onClick={ (e) => { this.handleClick(e) } }>add</button>
-				<input type="text" onChange={ (e) => { this.onValueChange(e) } } />
-			</div>
-		);
-	}
-
-	handleClick() {
-		this.setState({
-			age: this.state.age + 1
-		})
-	}
-
-	onValueChange(e) {
-		this.setState({
-			age: e.target.value
-		})
-	}
-}
+// layout
+import Layout from 'component/layout/index.jsx';
 
 class App extends React.Component {
-	render() {
-		return (
-			<div className="app">
-				<h1>App</h1>
-				<hr />
-				<Component />
-			</div>
-		)
-	}
+
+  render() {
+    return (
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={ Home } />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </Layout>
+      </Router>
+    )
+  }
 }
 
 ReactDOM.render(
-	<App />,
-	document.getElementById('app')
+  <App />,
+  document.getElementById("app")
 );

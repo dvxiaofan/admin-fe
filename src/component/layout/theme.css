@@ -190,7 +190,7 @@ p {
 	width: 70px;
 	height: 70px;
 	line-height: 75px;
-	vertical-align: middle;
+	/* vertical-align: middle; */
 	text-align: center;
 	font-size: 40px;
 }
@@ -249,7 +249,7 @@ p {
 	width: 70px;
 	height: 70px;
 	line-height: 75px;
-	vertical-align: middle;
+	/* vertical-align: middle; */
 	text-align: center;
 	font-size: 40px;
 }

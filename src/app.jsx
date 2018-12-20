@@ -2,7 +2,7 @@
  * @Author: xiaofan
  * @Date: 2018-12-07 23:49:58
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-18 21:07:58
+ * @Last Modified time: 2018-12-20 22:11:23
  */
 
 import React from "react";
@@ -23,7 +23,9 @@ class App extends React.Component {
         <Layout>
           <Switch>
             <Route exact path="/" component={ Home } />
-            <Redirect from="*" to="/" />
+            <Route path="/product" component={ Home } />
+            <Route path="/product-category" component={ Home } />
+            <Route path="/order" component={ Home } />
           </Switch>
         </Layout>
       </Router>

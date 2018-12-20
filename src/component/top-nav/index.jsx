@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-18 21:12:58 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-20 21:41:42
+ * @Last Modified time: 2018-12-20 21:46:26
  */
 
 
@@ -12,6 +12,10 @@ import { Link } from 'react-router-dom';
 
 
 class TopNav extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	
 	render() {
 		return (
 			<nav className="navbar navbar-default top-navbar">

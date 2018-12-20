@@ -2,63 +2,68 @@
  * @Author: xiaofan
  * @Date: 2018-12-18 21:13:17
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-18 22:25:20
+ * @Last Modified time: 2018-12-20 22:11:18
  */
 
 import React from "react";
+import { Link, NavLink } from 'react-router-dom';
 
 class SideNav extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	
 	render() {
 		return (
 			<nav className="navbar-default navbar-side" role="navigation">
 				<div className="sidebar-collapse">
-					<ul className="nav" id="main-menu">
+					<ul className="nav">
 						<li>
-							<a className="active-menu" href="">
+							<NavLink activeClassName="active-menu" exact to="/">
 								<i className="fa fa-bar-chart-o" />
 								<span>首页</span>
-							</a>
+							</NavLink>
 						</li>
 
-						<li>
-							<a href="">
+						<li className="active">
+							<Link to="/product">
 								<i className="fa fa-list" />
 								<span>商品</span>
 								<span className="fa arrow" />
-							</a>
+							</Link>
 							<ul className="nav nav-second-level collapse in">
 								<li>
-									<a href="" aria-current="false">
+									<NavLink to="/product" activeClassName="active-menu">
 										<span>商品管理</span>
-									</a>
+									</NavLink>
 								</li>
 								<li>
-									<a href="" aria-current="false">
+									<NavLink to="/product-category" activeClassName="active-menu">
 										<span>品类管理</span>
-									</a>
+									</NavLink>
 								</li>
 							</ul>
 						</li>
 
-						<li>
-							<a href="">
+						<li className="active">
+							<Link to="/order">
 								<i className="fa fa-check-square-o" />
 								<span>订单</span>
 								<span className="fa arrow" />
-							</a>
+							</Link>
 							<ul className="nav nav-second-level collapse in">
 								<li>
-									<a href="" aria-current="false">
+									<NavLink to="/order" activeClassName="active-menu">
 										<span>订单管理</span>
-									</a>
+									</NavLink>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<a href="">
+							<NavLink to="/user" activeClassName="active-menu">
 								<i className="fa fa-user" />
 								<span>用户</span>
-							</a>
+							</NavLink>
 						</li>
 					</ul>
 				</div>

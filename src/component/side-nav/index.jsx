@@ -2,7 +2,7 @@
  * @Author: xiaofan
  * @Date: 2018-12-18 21:13:17
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-20 22:11:18
+ * @Last Modified time: 2018-12-20 22:59:51
  */
 
 import React from "react";
@@ -59,11 +59,20 @@ class SideNav extends React.Component {
 								</li>
 							</ul>
 						</li>
-						<li>
-							<NavLink to="/user" activeClassName="active-menu">
+
+						<li className="active">
+							<Link to="/user">
 								<i className="fa fa-user" />
 								<span>用户</span>
-							</NavLink>
+								<span className="fa arrow" />
+							</Link>
+							<ul className="nav nav-second-level collapse in">
+								<li>
+									<NavLink to="/user" activeClassName="active-menu">
+										<span>用户列表</span>
+									</NavLink>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</div>

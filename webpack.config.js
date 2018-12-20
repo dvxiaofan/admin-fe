@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-07 23:49:29 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-18 21:05:15
+ * @Last Modified time: 2018-12-20 22:40:36
  */
 
 const path = require('path');
@@ -79,7 +79,8 @@ module.exports = {
 	plugins: [
 		// 处理html
 		new HtmlWebpackPlugin({
-			template: './src/index.html'
+			template: './src/index.html',
+			favicon : './favicon.ico'
 		}),
 		// 处理CSS
 		new ExtractTextPlugin("css/[name].css"),

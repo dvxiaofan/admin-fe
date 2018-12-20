@@ -1,15 +1,15 @@
 /*
- * @Author: xiaofan
- * @Date: 2018-12-18 15:57:57
+ * @Author: xiaofan 
+ * @Date: 2018-12-20 22:52:59 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-20 23:03:41
+ * @Last Modified time: 2018-12-20 22:55:16
  */
 
 import React        from "react";
 import PageTitle    from 'component/page-title/index.jsx';
 import './index.css';
 
-class Home extends React.Component {
+class User extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,8 +18,8 @@ class Home extends React.Component {
     return (
       <div id="page-wrapper">
         <div className="row">
-          <PageTitle title="首页" />
-          <div className="col-lg-12">
+          <PageTitle title="用户管理" />
+          <div className="col-md-12">
             body
           </div>
         </div>
@@ -28,4 +28,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default User;

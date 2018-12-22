@@ -1,0 +1,44 @@
+/*
+ * @Author: xiaofan 
+ * @Date: 2018-12-18 20:53:47 
+ * @Last Modified by: xiaofan
+ * @Last Modified time: 2018-12-22 20:44:44
+ */
+
+
+.color-box {
+	display: block;
+	height: 160px;
+	text-align: center;
+	padding: 20px 0;
+	opacity: .9;
+	// 所有动画过渡时间
+	transition: all .3s;
+
+	// scss方式的写法， &代表当前做择期
+	&:hover {
+		text-decoration: none;
+		color: #555;
+		opacity: 1;
+		// CSS3 方式的动画效果
+		transform: scale(1.08);
+	}
+
+	&:focus {
+		text-decoration: none;
+	}
+
+	.count {
+		font-size: 50px;
+		height: 80px;
+		line-height: 80px;
+	}
+
+	.desc {
+		font-size: 18px;
+
+		.fa {
+			margin-right: 5px;
+		}
+	}
+}

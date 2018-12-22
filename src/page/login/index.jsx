@@ -2,25 +2,31 @@
  * @Author: xiaofan
  * @Date: 2018-12-21 21:31:33
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-21 23:27:39
+ * @Last Modified time: 2018-12-22 17:14:55
  */
 
 import React from "react";
-import MUtil from "util/mm.jsx"
 import User  from "service/user-service.jsx" 
+import MUtil from "util/mm.jsx"
 
 import "./index.scss";
 
-const _mm = new MUtil();
 const _user = new User();
+const _mm   = new MUtil();
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
-      username: "",
-      password: ""
+      username: '',
+      password: '',
+      redirect: _mm.getUrlParam('redirect') || '/'
     };
+  }
+
+  componentWillMount() {
+    document.title = '登录 - XMALL ADMIN'
   }
 
   render() {
@@ -37,6 +43,7 @@ class Login extends React.Component {
                   id="exampleInputUsername"
                   name="username"
                   placeholder="User Name"
+                  onKeyUp={e => this.onInputKeyUp(e)}
                   onChange={e => this.onInputChange(e)}
                 />
               </div>
@@ -48,6 +55,7 @@ class Login extends React.Component {
                   id="exampleInputPassword1"
                   name="password"
                   placeholder="Password"
+                  onKeyUp={e => this.onInputKeyUp(e)}
                   onChange={e => this.onInputChange(e)}
                 />
               </div>
@@ -70,22 +78,33 @@ class Login extends React.Component {
     this.setState({
       [inputName]: e.target.value
     });
-	}
+  }
+  
+  // 敲击回车进行登录
+  onInputKeyUp(e) {
+    if(e.keyCode === 13) this.onSubmit();
+  }
 	
-	// 登录
-	onSubmit(e) {
-    _user.login({
+  // 登录
+  onSubmit(e) {
+    let loginInfo = {
       username: this.state.username,
       password: this.state.password
-    }).then(res => {
-      console.log(res);
-      
-    }, err => {
-      console.log(err);
-      
-    })
-		
-	}
+    },
+      checkResult = _user.checkLoginInfo(loginInfo);
+    
+    if(checkResult.status) {
+      _user.login(loginInfo).then(res => {
+        this.props.history.push(this.state.redirect)
+      }, errMsg => {
+        _mm.errorTips(errMsg)
+      })
+    }
+    // 验证不通过
+    else {
+      _mm.errorTips(checkResult.msg);
+    }
+  }
 
 
 }

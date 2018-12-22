@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-20 22:42:15 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-21 23:13:01
+ * @Last Modified time: 2018-12-22 16:55:13
  */
 
 
@@ -38,6 +38,22 @@ class MUtil {
 	doLogin() {
 		// 附带原来的参数，并对参数进行处理，防止有特殊字符
 		window.location.href = '/login?redirect=' +encodeURIComponent(window.location.pathname);
+	}
+
+	// 获取URL参数
+	getUrlParam(name) {
+		const reg = new RegExp('(^|&)' + name + '=([^&]*)($|&)'),
+			// 从？后面开始匹配规则
+			queryStr = window.location.search.split('?')[1] || '',
+			result = queryStr.match(reg);
+
+		// 先判断result是否存在
+		return result ? decodeURIComponent(result[2]) : null;
+	}
+
+	// 错误提示
+	errorTips(errMsg) {
+		alert(errMsg || '好像有个小问题');
 	}
 
 }

@@ -2,7 +2,7 @@
  * @Author: xiaofan
  * @Date: 2018-12-21 21:31:33
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-22 17:14:55
+ * @Last Modified time: 2018-12-22 17:50:45
  */
 
 import React from "react";
@@ -95,6 +95,8 @@ class Login extends React.Component {
     
     if(checkResult.status) {
       _user.login(loginInfo).then(res => {
+        // 把用户数据缓存，方便做别处调用显示
+        _mm.setStorage('userInfo', res);
         this.props.history.push(this.state.redirect)
       }, errMsg => {
         _mm.errorTips(errMsg)

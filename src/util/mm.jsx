@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-20 22:42:15 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-22 16:55:13
+ * @Last Modified time: 2018-12-22 17:49:13
  */
 
 
@@ -54,6 +54,37 @@ class MUtil {
 	// 错误提示
 	errorTips(errMsg) {
 		alert(errMsg || '好像有个小问题');
+	}
+
+	// 存储缓存数据
+	setStorage(name, data) {
+		let dataType = typeof data;
+		// JSON类型
+		if (dataType === 'object') {
+			window.localStorage.setItem(name, JSON.stringify(data));
+		}
+		// 基础类型
+		else if (['number', 'string', 'boolean'].indexOf(dataType) >= 0) {
+			window.localStorage.setItem(name, data);
+		} 
+		// 其他不支持的类型 
+		else {
+			alert('该类型不支持本地存储');
+		}
+	}
+	// 取出缓存数据
+	getStorage(name) {
+		let data = window.localStorage.getItem(name);
+		if(data) {
+			return JSON.parse(data);
+		}
+		else {
+			return '';
+		}
+	}
+	// 删除本地存储
+	removeStorage(name) {
+		window.localStorage.removeItem(name);
 	}
 
 }

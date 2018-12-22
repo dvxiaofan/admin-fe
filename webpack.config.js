@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-07 23:49:29 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-21 23:26:29
+ * @Last Modified time: 2018-12-22 18:10:18
  */
 
 const path 							= require('path');
@@ -102,6 +102,10 @@ module.exports = {
 			'/manage' : {
 				target: 'http://admintest.happymmall.com',
 				// 向服务器伪装请求地址
+				changeOrigin: true
+			},
+			'/user/logout.do'		: {
+				target: 'http://admintest.happymmall.com',
 				changeOrigin: true
 			}
 		}

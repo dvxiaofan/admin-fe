@@ -2,13 +2,13 @@
  * @Author: xiaofan 
  * @Date: 2018-12-07 23:49:29 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-20 22:40:36
+ * @Last Modified time: 2018-12-22 18:10:18
  */
 
-const path = require('path');
+const path 							= require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const webpack = require('webpack');
+const webpack 					= require('webpack');
 
 module.exports = {
 	entry: './src/app.jsx',
@@ -19,8 +19,10 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			page: path.resolve(__dirname, 'src/page'),
-			component: path.resolve(__dirname, 'src/component')
+			page				: path.resolve(__dirname, 'src/page'),
+			component		: path.resolve(__dirname, 'src/component'),
+			util				: path.resolve(__dirname, 'src/util'),
+			service			: path.resolve(__dirname, 'src/service')
 		}
 	},
 	module: {
@@ -95,6 +97,17 @@ module.exports = {
 		inline: true,
 		historyApiFallback: {
 			index: '/dist/index.html'
+		},
+		proxy: {
+			'/manage' : {
+				target: 'http://admintest.happymmall.com',
+				// 向服务器伪装请求地址
+				changeOrigin: true
+			},
+			'/user/logout.do'		: {
+				target: 'http://admintest.happymmall.com',
+				changeOrigin: true
+			}
 		}
 	},
 

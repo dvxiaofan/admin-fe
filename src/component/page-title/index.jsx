@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-20 22:19:34 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-20 23:02:59
+ * @Last Modified time: 2018-12-22 17:07:47
  */
 
 import React from "react";
@@ -13,7 +13,7 @@ class PageTitle extends React.Component {
 	}
 
 	componentWillMount() {
-		document.title = this.props.title + " - XMALL";
+		document.title = this.props.title + " - XMALL ADMIN";
 	}
 
 	render() {

@@ -2,11 +2,11 @@
  * @Author: xiaofan
  * @Date: 2018-12-18 21:13:17
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-20 22:59:51
+ * @Last Modified time: 2018-12-22 21:14:31
  */
 
-import React from "react";
-import { Link, NavLink } from 'react-router-dom';
+import React 							from "react";
+import { Link, NavLink } 	from 'react-router-dom';
 
 class SideNav extends React.Component {
 	constructor(props) {

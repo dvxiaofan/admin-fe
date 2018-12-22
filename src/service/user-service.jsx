@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-21 23:19:43 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-22 18:05:59
+ * @Last Modified time: 2018-12-22 23:01:32
  */
 
 import MUtil from 'util/mm.jsx';
@@ -47,6 +47,17 @@ class User {
       status: true,
       mag: "验证通过"
     };
+  }
+
+  // 获取用户列表信息
+  getUserList(pageNum) {
+    return _mm.request({
+      url		  : "/manage/user/list.do",
+      type	  : "post",
+      data    : {
+        pageNum	: pageNum
+      }
+    });
   }
 }
 

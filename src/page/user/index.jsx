@@ -2,43 +2,38 @@
  * @Author: xiaofan 
  * @Date: 2018-12-20 22:52:59 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-22 23:30:02
+ * @Last Modified time: 2018-12-23 17:56:36
  */
 
-import './index.css';
+import './index.scss';
 import 'rc-pagination/dist/rc-pagination.min.css';
 import React        from "react";
 import PageTitle    from 'component/page-title/index.jsx';
-import { Link }     from 'react-router-dom';
 import Pagination   from 'util/pagination/index.jsx';
-import UserList     from 'service/user-service.jsx';
+import TableList    from 'util/table-list/index.jsx';
+import User         from 'service/user-service.jsx';
 import MUtil        from 'util/mm.jsx';
 
-const _user = new UserList();
+const _user = new User();
 const _mm 	= new MUtil();
 
-class User extends React.Component {
+class UserList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       list          : [],
-      pageNum       : 1,
-      firstLoading   : true
+      pageNum       : 1
     }
   }
 
   componentDidMount() {
     this.loadUserList();
   }
-
+  // 加载用户信息
   loadUserList() {
     _user.getUserList(this.state.pageNum).then(res => {
-      this.setState(res, () => {
-        this.setState({
-          firstLoading: false
-        })
-      });
+      this.setState(res);
     }, errMsg => {
       // 有错误的时候清空list
       this.setState({
@@ -58,7 +53,7 @@ class User extends React.Component {
   }
 
   render() {
-    // list 存在
+    // listBody
     let listBody = this.state.list.map((user, index) => {
       return (
         <tr key={ index }>
@@ -71,37 +66,13 @@ class User extends React.Component {
         </tr>
       );
     });
-    // list 不存在
-    let listError = (
-      <tr>
-        <td colSpan='5' className="text-center">
-          {this.state.firstLoading ? '正在加载用户数据' : '没找到相关用户数据' }
-        </td>
-      </tr>
-    );
-    let tableBody = this.state.list.length > 0 ? listBody : listError;
 
     return (
       <div id="page-wrapper">
         <PageTitle title="用户管理" />
-        <div className="row">
-          <div className="col-md-12">
-            <table className="table table-striped table-bordered">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>用户名</th>
-                  <th>邮箱</th>
-                  <th>电话</th>
-                  <th>注册时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tableBody}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <TableList tableHeads={['ID', '用户名', '邮箱', '电话', '注册时间', '']}>
+          { listBody }
+        </TableList>
         <Pagination 
           total={ this.state.total } 
           current={this.state.pageNum}
@@ -112,4 +83,4 @@ class User extends React.Component {
   }
 }
 
-export default User;
+export default UserList;

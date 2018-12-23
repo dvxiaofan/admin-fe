@@ -2,12 +2,12 @@
  * @Author: xiaofan 
  * @Date: 2018-12-20 22:47:59 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-20 23:06:03
+ * @Last Modified time: 2018-12-23 15:43:25
  */
 
+import './index.scss';
 import React        from "react";
 import PageTitle    from 'component/page-title/index.jsx';
-import './index.css';
 
 class ProductCategory extends React.Component {
   constructor(props) {

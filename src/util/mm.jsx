@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-20 22:42:15 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-22 17:49:13
+ * @Last Modified time: 2018-12-23 17:37:55
  */
 
 
@@ -49,6 +49,11 @@ class MUtil {
 
 		// 先判断result是否存在
 		return result ? decodeURIComponent(result[2]) : null;
+	}
+
+	// 成功提示
+	successTips(msg) {
+		alert(msg || '操作成功');
 	}
 
 	// 错误提示

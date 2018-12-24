@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-23 15:50:14 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-23 22:59:09
+ * @Last Modified time: 2018-12-24 21:59:14
  */
 
 import MUtil from 'util/mm.jsx';
@@ -42,6 +42,17 @@ class Product {
       type	  : "post",
       data    : productInfo
     });
+  }
+
+  // 获取商品分类
+  getCategoryList(parentCateId) {
+    return _mm.request({
+      url   : '/manage/category/get_category.do',
+      type  : 'post',
+      data  : {
+        categoryId: parentCateId || 0
+      }
+    })
   }
 }
 

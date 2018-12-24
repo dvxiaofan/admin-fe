@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-20 22:47:03 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-23 22:58:16
+ * @Last Modified time: 2018-12-24 20:23:59
  */
 
 import './index.scss';
@@ -105,7 +105,14 @@ class ProductList extends React.Component {
 			{ name: '操作', width: '15%' }
 		];
 		return <div id="page-wrapper">
-			<PageTitle title="商品管理" />
+			<PageTitle title="商品管理">
+				<div className="page-header-right">
+					<Link className="btn btn-primary" to="/product/save">
+						<i className="fa fa-plus"></i>
+						<span>添加商品</span>
+					</Link>
+				</div>
+			</PageTitle>
 			{/* 搜索组件 */ }
 			<ListSearch onSearch={ (searchType, searchKeyword) => { this.onSearch(searchType, searchKeyword) } } />
 			{/* tableList组件 */ }

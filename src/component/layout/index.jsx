@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-18 20:59:02 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-18 21:14:32
+ * @Last Modified time: 2018-12-24 20:34:27
  */
 
 import React from 'react';
@@ -11,6 +11,7 @@ import SideNav from 'component/side-nav/index.jsx';
 
 
 import './theme.css';
+import './index.scss';
 
 class layout extends React.Component {
 	constructor(props) {

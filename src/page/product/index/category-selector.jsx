@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-24 21:36:10 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-24 22:49:41
+ * @Last Modified time: 2018-12-25 18:23:39
  */
 
 import './category-selector.scss';
@@ -17,16 +17,44 @@ class CategorySelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstCategoryList: [],
-      firstCategoryId: 0,
-      secondCategoryList: [],
-      secondCategoryId: 0
+      firstCategoryList    : [],
+      firstCategoryId      : 0,
+      secondCategoryList  : [],
+      secondCategoryId    : 0
     };
   }
 
   componentDidMount() {
     this.loadFirstCategory();
   }
+
+  componentWillReceiveProps(nextProps) {
+    let categroyIdChange = this.props.categoryId !== nextProps.categoryId,
+      parentCategroyIdChange = this.props.parentCategoryId !== nextProps.parentCategoryId;
+
+    // 数据未发生变化
+    if(!categroyIdChange && !parentCategroyIdChange) {
+      return;
+    };
+
+    // 只有一级品类
+    if(nextProps.parentCategoryId === 0) {
+      this.setState({
+        firstCategoryId     : nextProps.categoryId,
+        secondCategoryId   : 0 
+      }, () => {
+        parentCategroyIdChange && this.loadSecondCategoryId();
+      })
+    } 
+    // 有二级分类
+    else {
+      this.setState({
+        firstCategoryId    : nextProps.parentCategoryId,
+        secondCategoryId  : nextProps.categoryId
+      })
+    }
+  }
+  
   // 加载一级分类
   loadFirstCategory() {
     _product.getCategoryList().then(
@@ -103,6 +131,7 @@ class CategorySelector extends React.Component {
     return (
       <div className="col-md-10">
         <select
+          value={this.state.firstCategoryId}
           className="form-control cate-select"
           onChange={e => this.onFirstCateChange(e)}>
           <option value="">请选择一级品类</option>
@@ -114,6 +143,7 @@ class CategorySelector extends React.Component {
         </select>
         {this.state.secondCategoryList.length ? (
           <select
+            value={this.state.secondCategoryId}
 						className="form-control cate-select"
 						onChange={e => this.onSecondCateChange(e)}>
             <option value="">请选择二级品类</option>

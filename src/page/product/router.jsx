@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-23 15:29:14 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-25 17:08:19
+ * @Last Modified time: 2018-12-25 19:21:07
  */
 
 
@@ -17,7 +17,6 @@ class ProductRouter extends React.Component {
     return (
       <Switch>
         <Route path="/product/index" component={ ProductList } />
-        <Route path="/product-category" component={ ProductCagegory } />
         <Route path="/product/save/:pid" component={ ProductSave } />
         <Redirect exact form="/product" to="/product/index" />
       </Switch>

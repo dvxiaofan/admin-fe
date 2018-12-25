@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-23 15:50:14 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-25 15:50:54
+ * @Last Modified time: 2018-12-25 17:23:17
  */
 
 import MUtil from 'util/mm.jsx';
@@ -94,6 +94,17 @@ class Product {
       data  : product
     })
   }
+
+  getProduct(productId) {
+    return _mm.request({
+      url   : '/manage/product/detail.do',
+      type  : 'post',
+      data  : {
+        productId: productId || 0
+      }
+    })
+  }
+
 }
 
 export default Product;

@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-23 15:50:14 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-24 21:59:14
+ * @Last Modified time: 2018-12-25 17:23:17
  */
 
 import MUtil from 'util/mm.jsx';
@@ -54,6 +54,57 @@ class Product {
       }
     })
   }
+
+  // 检查商品信息
+  checkProduct(product) {
+    let result = { status: true, msg: "验证通过" };
+
+    if (typeof product.name !== "string" || product.name.length === 0) {
+      return { status: false, msg: "商品名称不能为空" };
+    }
+
+    if (typeof product.name !== "string" || product.name.length === 0) {
+      return { status: false, msg: "商品名称不能为空" };
+    }
+
+    if (typeof product.subtitle !== "string" || product.subtitle.length === 0) {
+      return { status: false, msg: "商品描述不能为空" };
+    }
+
+    if (typeof product.categoryId !== "number" || !(product.categoryId > 0)) {
+      return { status: false, msg: "请正确选择商品分类" };
+    }
+
+    if (typeof product.price !== "number" || !(product.price >= 0)) {
+      return { status: false, msg: "请正确输入商品价格" };
+    }
+
+    if (typeof product.stock !== "number" || !(product.stock >= 0)) {
+      return { status: false, msg: "请正确输入商品库存" };
+    }
+
+    return result;
+  }
+
+  // 保存商品
+  saveProduct(product) {
+    return _mm.request({
+      url   : '/manage/product/save.do',
+      type  : 'post',
+      data  : product
+    })
+  }
+
+  getProduct(productId) {
+    return _mm.request({
+      url   : '/manage/product/detail.do',
+      type  : 'post',
+      data  : {
+        productId: productId || 0
+      }
+    })
+  }
+
 }
 
 export default Product;

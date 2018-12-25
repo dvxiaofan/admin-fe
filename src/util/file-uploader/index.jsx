@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-25 11:59:47 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-25 12:38:34
+ * @Last Modified time: 2018-12-25 13:59:27
  */
 
 
@@ -18,17 +18,11 @@ class FileUploader extends React.Component {
 			fileFieldName		 : 'upload_file',
 			dataType				: 'json',
 			chooseAndUpload	: true,
-			uploadSuccess		: (res) => {
-				console.log(res);
-				
-			},
-			uploadError			: (err) => {
-				console.log(err);
-				
-			}
+			uploadSuccess		: res => {this.props.onSuccess(res.data)},
+			uploadError			: errMsg => {this.props.onError(errMsg || '上传图片失败')}
 		}
 		return <FileUpload options={options}>
-        <button ref="chooseAndUpload">上传图片</button>
+        <button className="btn btn-xs btn-default" ref="chooseAndUpload">上传图片</button>
       </FileUpload>;
 	}
 }

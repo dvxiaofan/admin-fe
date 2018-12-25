@@ -2,19 +2,20 @@
  * @Author: xiaofan
  * @Date: 2018-12-24 20:20:16
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-25 14:19:56
+ * @Last Modified time: 2018-12-25 14:47:56
  */
 
 import './save.scss';
-import React from "react";
-import PageTitle from "component/page-title/index.jsx";
-import Product from "service/product-service.jsx";
-import MUtil from "util/mm.jsx";
-import CategorySelector from "page/product/index/category-selector.jsx";
-import FileUploader from "util/file-uploader/index.jsx";
+import React              from "react";
+import PageTitle          from "component/page-title/index.jsx";
+import Product            from "service/product-service.jsx";
+import MUtil              from "util/mm.jsx";
+import CategorySelector   from "page/product/index/category-selector.jsx";
+import FileUploader       from "util/file-uploader/index.jsx";
+import RichEditor         from "util/rich-editor/index.jsx";
 
-const _product = new Product();
-const _mm = new MUtil();
+const _product  = new Product();
+const _mm       = new MUtil();
 
 // 通用分页组件
 class ProductSave extends React.Component {
@@ -61,10 +62,21 @@ class ProductSave extends React.Component {
     })
   }
 
+  // 富文本编辑器变化
+  onDetailValueChange(value) {
+    console.log(value);
+    
+    this.setState({
+      detail: value
+    })
+  }
+
+
   render() {
     return <div id="page-wrapper">
         <PageTitle title="添加商品" />
         <div className="form-horizontal">
+
           <div className="form-group">
             <label className="col-md-2 control-label">商品名称</label>
             <div className="col-md-5">
@@ -124,7 +136,7 @@ class ProductSave extends React.Component {
           <div className="form-group">
             <label className="col-md-2 control-label">商品详情</label>
             <div className="col-md-10">
-              <p>富文本</p>
+              <RichEditor onValueChange={value => this.onDetailValueChange(value)} />
             </div>
           </div>
 

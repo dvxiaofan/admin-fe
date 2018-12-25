@@ -2,11 +2,12 @@
  * @Author: xiaofan 
  * @Date: 2018-12-25 14:29:07 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-25 14:50:32
+ * @Last Modified time: 2018-12-25 20:07:00
  */
 
 
 import 'simditor/styles/simditor.scss';
+import './index.scss';
 
 import React        from "react";
 import Simditor 		from "simditor";
@@ -17,6 +18,12 @@ class RichEditor extends React.Component {
 
 	componentDidMount() {
 		this.loadEditor();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if(this.props.defaultDetail !== nextProps.defaultDetail) {
+			this.simditor.setValue(nextProps.defaultDetail);
+		}
 	}
 
 	// 加载编辑器

@@ -2,7 +2,7 @@
  * @Author: xiaofan
  * @Date: 2018-12-24 20:20:16
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-25 18:33:42
+ * @Last Modified time: 2018-12-25 20:53:21
  */
 
 import './save.scss';
@@ -23,7 +23,7 @@ class ProductSave extends React.Component {
     super(props);
 
     this.state = {
-      id                : this.props.match.params.pid || '',
+      id                : this.props.match.params.pid,
       name              : '',
       subtitle          : '',
       categoryId        : 0,
@@ -52,6 +52,8 @@ class ProductSave extends React.Component {
             url: res.imageHost + imgUri
           }
         })
+        // 暂存商品信息
+        this.state.defaultDetail = res.detail;
         this.setState(res);
       }, errMsg => {
         _mm.errorTips(errMsg);
@@ -69,7 +71,7 @@ class ProductSave extends React.Component {
 
   // 上传图片成功
   onUploadSuccess(res) {
-    let subImages = this.state.subImages;
+    let subImages = this.state.subImages;    
     subImages.push(res);
     this.setState({
       subImages
@@ -109,7 +111,7 @@ class ProductSave extends React.Component {
   }
 
   getSubImagesString() {
-    return this.state.subImages.map(image => image.url).join(",");
+    return this.state.subImages.map(image => image.uri).join(',');
   }
 
   // 提交表单
@@ -126,6 +128,10 @@ class ProductSave extends React.Component {
       },
       // 验证表单
       productCheckResult = _product.checkProduct(product);
+      
+      if(this.state.id) {
+        product.id = this.state.id;
+      }
 
     if (productCheckResult.status) {
       _product.saveProduct(product).then(
@@ -145,7 +151,12 @@ class ProductSave extends React.Component {
   render() {
     return (
       <div id="page-wrapper">
-        <PageTitle title="添加商品" />
+        {
+          this.state.id ?
+            <PageTitle title="编辑商品" />
+            : <PageTitle title="添加商品" />
+        }
+        
         <div className="form-horizontal">
           <div className="form-group">
             <label className="col-md-2 control-label">商品名称</label>
@@ -251,6 +262,7 @@ class ProductSave extends React.Component {
             <div className="col-md-10">
               <RichEditor
                 detail={this.state.detail}
+                defaultDetail={this.state.defaultDetail}
                 onValueChange={ value => this.onDetailValueChange(value) }
               />
             </div>

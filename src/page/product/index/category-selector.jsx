@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-24 21:36:10 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-25 18:23:39
+ * @Last Modified time: 2018-12-25 19:36:09
  */
 
 import './category-selector.scss';
@@ -42,8 +42,6 @@ class CategorySelector extends React.Component {
       this.setState({
         firstCategoryId     : nextProps.categoryId,
         secondCategoryId   : 0 
-      }, () => {
-        parentCategroyIdChange && this.loadSecondCategoryId();
       })
     } 
     // 有二级分类
@@ -51,6 +49,8 @@ class CategorySelector extends React.Component {
       this.setState({
         firstCategoryId    : nextProps.parentCategoryId,
         secondCategoryId  : nextProps.categoryId
+      }, () => {
+        parentCategroyIdChange && this.loadSecondCateList();
       })
     }
   }

@@ -2,7 +2,7 @@
  * @Author: xiaofan 
  * @Date: 2018-12-24 21:36:10 
  * @Last Modified by: xiaofan
- * @Last Modified time: 2018-12-25 19:36:09
+ * @Last Modified time: 2019-01-03 22:10:43
  */
 
 import './category-selector.scss';
@@ -84,6 +84,7 @@ class CategorySelector extends React.Component {
 
   // 选择一级分类变化的时候
   onFirstCateChange(e) {
+		if (this.props.readOnly) return;
     let newValue = e.target.value || 0;
     this.setState(
       {
@@ -102,6 +103,7 @@ class CategorySelector extends React.Component {
 	}
 	// 选择二级分类
 	onSecondCateChange(e) {
+		if (this.props.readOnly) return;
 		let newValue = e.target.value || 0;
     this.setState(
       {
@@ -133,7 +135,8 @@ class CategorySelector extends React.Component {
         <select
           value={this.state.firstCategoryId}
           className="form-control cate-select"
-          onChange={e => this.onFirstCateChange(e)}>
+          onChange={e => this.onFirstCateChange(e)}
+					>
           <option value="">请选择一级品类</option>
           {this.state.firstCategoryList.map((category, index) => (
             <option value={category.id} key={index}>
@@ -145,7 +148,9 @@ class CategorySelector extends React.Component {
           <select
             value={this.state.secondCategoryId}
 						className="form-control cate-select"
-						onChange={e => this.onSecondCateChange(e)}>
+						onChange={e => this.onSecondCateChange(e)}
+						
+						>
             <option value="">请选择二级品类</option>
             {this.state.secondCategoryList.map((category, index) => (
               <option value={category.id} key={index}>

@@ -1,0 +1,11 @@
+{
+  "name": "admin-fe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dvxiaofan/admin-fe.git",
+  "author": "devzhang <1353815633@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "3.10.0"
+  }
+}

@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-04-29 16:16:09 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-04-30 16:56:08
+ * @Last Modified time: 2019-05-09 15:43:39
  */
 
 const webpack = require('webpack');
@@ -16,6 +16,11 @@ let config = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/dist/',
         filename: 'js/app.js'
+    },
+    resolve: {
+        alias: {
+            page: path.resolve(__dirname, 'src/page')
+        }
     },
     module: {
         rules: [
@@ -85,6 +90,7 @@ let config = {
     ],
     devServer: {
         // contentBase: './dist'
+        // 开发调试端口
         port: 8090
     }
 }

@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-05-10 14:09:45 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-11 15:20:41
+ * @Last Modified time: 2019-05-11 15:44:54
  */
 
 
@@ -24,7 +24,6 @@ class NavTop extends React.Component {
 
 				<ul className="nav navbar-top-links navbar-right">
 					<li className="dropdown">
-						
 						<a className="dropdown-toggle" href="javascript:;">
 							<i className="fa fa-user fa-fw"></i>
 							<span>欢迎，admin用户</span>

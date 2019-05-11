@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-04-30 15:26:41 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-09 17:45:56
+ * @Last Modified time: 2019-05-11 15:11:42
  */
 
 import React from "react";
@@ -19,7 +19,10 @@ class App extends React.Component {
         <Layout >
           <Switch>
             <Route exact path="/" component={Home} />
-            <Redirect from="*" to = "/" />1
+            <Route path="/product" component={Home} />
+            <Route path="/product.category" component={Home} />
+            <Route path="/order" component={Home} />
+            <Route path="/user" component={Home} />
           </Switch>
         </Layout>
       </Router>

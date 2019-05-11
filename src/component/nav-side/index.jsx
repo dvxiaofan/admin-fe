@@ -2,11 +2,12 @@
  * @Author: DevZhang 
  * @Date: 2019-05-10 14:25:51 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-10 15:20:10
+ * @Last Modified time: 2019-05-11 15:11:05
  */
 
 
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
     
 class NavSide extends React.Component {
@@ -16,67 +17,67 @@ class NavSide extends React.Component {
 
     render() {
         return (
-            <div className="navbar-default navbar-side" role="navigation">
-            <div className="sidebar-collapse">
-                <ul className="nav" id="main-menu">
+			<nav className="navbar-default navbar-side" role="navigation">
+				<div className="sidebar-collapse">
+					<ul className="nav" id="main-menu">
+						<li>
+							<NavLink activeClassName="active-menu" exact to="/">
+								<i className="fa fa-bar-chart-o" />
+								<span>首页</span>
+							</NavLink>
+						</li>
 
-                    <li>
-                        <a className="active-menu" href="index.html"><i className="fa fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="ui-elements.html"><i className="fa fa-desktop"></i> UI Elements</a>
-                    </li>
-					<li>
-                        <a href="chart.html"><i className="fa fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tab-panel.html"><i className="fa fa-qrcode"></i> Tabs &amp; Panels</a>
-                    </li>
-                    
-                    <li>
-                        <a href="table.html"><i className="fa fa-table"></i> Responsive Tables</a>
-                    </li>
-                    <li>
-                        <a href="form.html"><i className="fa fa-edit"></i> Forms </a>
-                    </li>
+						<li>
+							<Link to="/product">
+								<i className="fa fa-list" />
+								<span>商品</span>
+								<span className="fa arrow" />
+							</Link>
+							<ul className="nav nav-second-level collapse in">
+								<li>
+									<NavLink to="/product" activeClassName="active-menu">
+										<span>商品管理</span>
+									</NavLink>
+								</li>
+								<li>
+									<NavLink to="/product.category" activeClassName="active-menu">
+										<span>品类管理</span>
+									</NavLink>
+								</li>
+							</ul>
+						</li>
 
-
-                    <li>
-                        <a href="#"><i className="fa fa-sitemap"></i> Multi-Level Dropdown<span className="fa arrow"></span></a>
-                        <ul className="nav nav-second-level collapse">
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span className="fa arrow"></span></a>
-                                <ul className="nav nav-third-level collapse">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="empty.html"><i className="fa fa-fw fa-file"></i> Empty Page</a>
-                    </li>
-                </ul>
-
-            </div>
-
-        </div>
-        )
+						<li>
+							<Link to="/order">
+								<i className="fa fa-check-square-o" />
+								<span>订单</span>
+								<span className="fa arrow" />
+							</Link>
+							<ul className="nav nav-second-level collapse in">
+								<li>
+									<NavLink to="/order" activeClassName="active-menu">
+										<span>订单管理</span>
+									</NavLink>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<Link to="/user">
+								<i className="fa fa-user" />
+								<span>用户</span>
+							</Link>
+							<ul className="nav nav-second-level collapse in">
+								<li>
+									<NavLink to="/user" activeClassName="active-menu">
+										<span>用户列表</span>
+									</NavLink>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		);
     }
 }
 

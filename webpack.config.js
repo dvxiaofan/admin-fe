@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-04-29 16:16:09 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-09 17:41:32
+ * @Last Modified time: 2019-05-13 15:07:10
  */
 
 const webpack = require('webpack');
@@ -20,7 +20,9 @@ let config = {
     resolve: {
         alias: {
             page: path.resolve(__dirname, 'src/page'),
-            component: path.resolve(__dirname, 'src/component')
+            component: path.resolve(__dirname, 'src/component'),
+            util: path.resolve(__dirname, 'src/util'),
+            service: path.resolve(__dirname, 'src/service')
         }
     },
     module: {

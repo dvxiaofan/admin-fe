@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-04-29 16:16:09 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-13 15:07:10
+ * @Last Modified time: 2019-05-13 15:52:27
  */
 
 const webpack = require('webpack');
@@ -97,8 +97,18 @@ let config = {
         port: 8090,
         historyApiFallback: {
             index: 'dist/index.html'
+        },
+        proxy: {
+            '/manage': {
+                target: 'http://admintest.happymmall.com',
+                changeOrigin: true
+            },
+            '/user/logout.do': {
+                target: 'http://admintest.happymmall.com',
+                changeOrigin: true
+            }
         }
     }
-}
+};
 
 module.exports = config;

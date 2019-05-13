@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-05-13 14:39:09 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-13 15:34:17
+ * @Last Modified time: 2019-05-13 15:55:45
  */
 
 
@@ -59,7 +59,7 @@ class MUtil {
     setStorage(name, data) {
         let dataType = typeof data;
         // JSON类型数据
-        if (dataType === 'Object') {
+        if (dataType === 'object') {
             window.localStorage.setItem(name, JSON.stringify(data));
         }
         // 基础类型数据

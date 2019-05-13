@@ -2,17 +2,27 @@
  * @Author: DevZhang 
  * @Date: 2019-05-10 14:09:45 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-11 15:44:54
+ * @Last Modified time: 2019-05-13 16:28:49
  */
 
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MUtil from 'util/mm.jsx';
+import User from 'service/user-service.jsx';
+
+
+const _user = new User();
+const _mm = new MUtil();
 
 
 class NavTop extends React.Component {
     constructor(props) {
-        super(props);
+		super(props);
+		
+		this.state = {
+			username: _mm.getStorage('userInfo').username || ''
+		}
     }
     
     render() {
@@ -26,12 +36,20 @@ class NavTop extends React.Component {
 					<li className="dropdown">
 						<a className="dropdown-toggle" href="javascript:;">
 							<i className="fa fa-user fa-fw"></i>
-							<span>欢迎，admin用户</span>
+							{
+								this.state.username
+								? <span>欢迎，{ this.state.username }</span>
+								: <span>欢迎您</span>
+							}
 							<i className="fa fa-caret-down"></i>
 						</a>
 
 						<ul className="dropdown-menu dropdown-user">
-							<li><a><i className="fa fa-sign-out fa-fw"></i> 退出登录</a>
+							<li>
+								<a onClick={ () => { this.onLogout() } }>
+									<i className="fa fa-sign-out fa-fw"></i>
+									<span>退出登录</span>
+								</a>
 							</li>
 						</ul>
 
@@ -39,7 +57,17 @@ class NavTop extends React.Component {
 				</ul>
 			</nav>
 		)
-    }
+	}
+	
+	onLogout() {
+		_user.logout()
+		.then( () => {
+			_mm.removeStorage('userInfo');
+			window.location.href = '/login';
+		}, errMsg => {
+			_mm.errorTips(errMsg);
+		});
+	}
 }
 
 

@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-04-29 16:16:09 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-13 15:52:27
+ * @Last Modified time: 2019-05-13 16:11:27
  */
 
 const webpack = require('webpack');
@@ -81,7 +81,8 @@ let config = {
     plugins: [
         // 处理HTML文件
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/index.html',
+            favicon: './favicon.ico'
         }),
         // 独立CSS文件
         new ExtractTextPlugin('css/[name].css'),

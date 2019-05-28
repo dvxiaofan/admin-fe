@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-05-13 14:12:04 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-13 15:37:02
+ * @Last Modified time: 2019-05-28 13:10:57
  */
 
 
@@ -11,7 +11,7 @@ import React from 'react';
 import User from 'service/user-service.jsx';
 import MUtil from 'util/mm.jsx';
 
-import './index.css';
+import './index.scss';
 
 const _user = new User();
 const _mm = new MUtil();

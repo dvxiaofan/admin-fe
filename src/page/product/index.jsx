@@ -2,14 +2,14 @@
  * @Author: DevZhang 
  * @Date: 2019-05-13 13:55:04 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-13 13:57:56
+ * @Last Modified time: 2019-05-28 13:11:17
  */
 
 
 import React from 'react';
 import PageTitle from 'component/page-title/index.jsx';
 
-import './index.css';
+import './index.scss';
 
 
 class Product extends React.Component {

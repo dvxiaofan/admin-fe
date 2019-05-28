@@ -2,14 +2,14 @@
  * @Author: DevZhang 
  * @Date: 2019-05-13 13:40:46 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-13 13:53:25
+ * @Last Modified time: 2019-05-28 13:11:31
  */
 
 
 import React from 'react';
 import PageTitle from 'component/page-title/index.jsx';
 
-import './index.css';
+import './index.scss';
 
 
 class User extends React.Component {

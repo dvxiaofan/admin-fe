@@ -1,0 +1,41 @@
+/*
+ * @Author: DevZhang 
+ * @Date: 2019-05-28 13:03:24 
+ * @Last Modified by: DevZhang
+ * @Last Modified time: 2019-05-28 13:09:50
+ */
+
+
+.color-box {
+    display: block;
+    height: 160px;
+    text-align: center;
+    padding: 20px;
+    opacity: 0.9;
+    transition: all 0.3s;   // 所有动画的过渡时间
+
+    &:hover {
+        text-decoration: none;
+        color: #555;
+        opacity: 1;
+        transform: scale(1.08); // CSS3 方式的动画效果
+    }
+
+    &:focus {
+        text-decoration: none;
+    }
+
+    .count {
+        font-size: 50px;
+        height: 80px;
+        line-height: 80px;
+    }
+
+    .desc {
+        font-size: 18px;
+
+        .fa {
+            margin-right: 5px;
+        }
+    }
+}

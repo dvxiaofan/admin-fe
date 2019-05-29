@@ -3,7 +3,7 @@
 
 ## 项目展示
 
-![](http://ww1.sinaimg.cn/large/6b65559dgy1g3gyki6078j213x0lawfw.jpg)
+![](http://ww1.sinaimg.cn/large/6b65559dgy1g3gywp3pwdj213w0l8jsu.jpg)
 
 ## 功能模块
 

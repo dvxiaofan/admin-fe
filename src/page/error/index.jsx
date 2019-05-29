@@ -1,18 +1,16 @@
 /*
  * @Author: DevZhang 
- * @Date: 2019-05-13 13:55:04 
+ * @Date: 2019-05-29 22:45:03 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-28 13:11:17
+ * @Last Modified time: 2019-05-29 22:49:35
  */
 
 
 import React from 'react';
 import PageTitle from 'component/page-title/index.jsx';
+import { Link } from 'react-router-dom';
 
-import './index.scss';
-
-
-class Product extends React.Component {
+class ErrorPage extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -20,10 +18,11 @@ class Product extends React.Component {
     render() {
         return (
             <div id="page-wrapper">
+                <PageTitle title='出错啦!' />
                 <div className="row">
-                    <PageTitle title="商品管理" />
                     <div className="col-md-12">
-                        Product
+                        <span>页面不存在</span>
+                        <Link to='/'>点我返回主页</Link>
                     </div>
                 </div>
             </div>
@@ -31,4 +30,5 @@ class Product extends React.Component {
     }
 }
 
-export default Product;
+
+export default ErrorPage;

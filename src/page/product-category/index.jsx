@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-05-13 13:54:20 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-28 13:11:23
+ * @Last Modified time: 2019-05-29 22:39:59
  */
 
 
@@ -20,8 +20,8 @@ class ProductCategory extends React.Component {
     render() {
         return (
             <div id="page-wrapper">
+                <PageTitle title="品类管理" />
                 <div className="row">
-                    <PageTitle title="品类管理" />
                     <div className="col-md-12">
                         ProductCategory
                     </div>

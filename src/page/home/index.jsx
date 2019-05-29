@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-05-09 15:40:23 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-28 13:13:24
+ * @Last Modified time: 2019-05-29 12:17:56
  */
 
 
@@ -61,7 +61,7 @@ class Home extends React.Component {
                     </div>
                     
                     <div className="col-md-4">
-                        <Link to="/product" className="color-box blue">
+                        <Link to="/product/index" className="color-box brown">
                             <p className="count">{this.state.productCount}</p>
                             <p className="desc">
                                 <i className="fa fa-list"></i>
@@ -69,9 +69,8 @@ class Home extends React.Component {
                             </p>
                         </Link>
                     </div>
-
                     <div className="col-md-4">
-                        <Link to="/order" className="color-box blue">
+                        <Link to="/order" className="color-box green">
                             <p className="count">{this.state.orderCount}</p>
                             <p className="desc">
                                 <i className="fa fa-check-square-o"></i>

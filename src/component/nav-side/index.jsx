@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-05-10 14:25:51 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-11 15:11:05
+ * @Last Modified time: 2019-05-29 22:57:09
  */
 
 
@@ -40,7 +40,7 @@ class NavSide extends React.Component {
 									</NavLink>
 								</li>
 								<li>
-									<NavLink to="/product.category" activeClassName="active-menu">
+									<NavLink to="/product-category" activeClassName="active-menu">
 										<span>品类管理</span>
 									</NavLink>
 								</li>

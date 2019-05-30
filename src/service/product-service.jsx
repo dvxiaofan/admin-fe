@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-05-29 12:07:40 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-29 22:20:30
+ * @Last Modified time: 2019-05-30 13:16:11
  */
 
 
@@ -13,13 +13,24 @@ const _mm = new MUtil();
 
 class Product {
     // 获取商品列表信息
-    getProductList(pageNum) {
+    getProductList(listParam) {
+        let url = '',
+            data= {};
+
+        // 非搜索
+        if (listParam.listType === 'list') {
+            url = '/manage/product/list.do';
+            data.pageNum = listParam.pageNum;
+        } else if (listParam.listType === 'search') {
+            url = '/manage/product/search.do';
+            data.pageNum = listParam.pageNum;
+            data[listParam.searchType] = listParam.keyword;
+        }
+
         return _mm.request({
-            url: '/manage/product/list.do',
+            url: url,
             type: 'post',
-            data: {
-                pageNum: pageNum
-            }
+            data: data
         });
     }
 

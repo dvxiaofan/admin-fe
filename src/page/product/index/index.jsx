@@ -2,7 +2,7 @@
  * @Author: DevZhang 
  * @Date: 2019-05-13 13:55:04 
  * @Last Modified by: DevZhang
- * @Last Modified time: 2019-05-29 23:07:08
+ * @Last Modified time: 2019-05-30 13:28:42
  */
 
 
@@ -13,6 +13,7 @@ import PageTitle from 'component/page-title/index.jsx';
 import Pagination from 'util/pagination/index.jsx';
 import Product from 'service/product-service.jsx';
 import TableList from 'util/table-list/index.jsx';
+import ListSearch from './index-list-search.jsx';
 import MUtil from 'util/mm.jsx';
 import { Link } from 'react-router-dom';
 
@@ -24,10 +25,10 @@ const _mm = new MUtil();
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             list: [],
-            pageNum: 1
+            pageNum: 1,
+            listType: 'list'    // 默认商品列表类型,判断是否是搜索模式
         }
     }
 
@@ -35,8 +36,19 @@ class ProductList extends React.Component {
         this.loadProductList();
     }
 
+    // 下载商品列表
     loadProductList() {
-        _product.getProductList(this.state.pageNum)
+        let listParam = {};
+        listParam.listType = this.state.listType;
+        listParam.pageNum = this.state.pageNum;
+
+        // 如果是搜索状态, 需要传入搜索类型和关键字
+        if (this.state.listType === 'search') {
+            listParam.searchType = this.state.searchType;
+            listParam.keyword = this.state.searchKeyword;
+        }
+
+        _product.getProductList(listParam)
         .then(res => {
             this.setState(res);
         }, eMsg => {
@@ -74,6 +86,21 @@ class ProductList extends React.Component {
         }
     }
 
+    // 搜索商品
+    onSearch(searchType, searchKeyword) {
+        // 确定是搜索模式还是默认商品列表
+        let listType = searchKeyword === '' ? 'list' : 'search';
+        
+        this.setState({
+            listType: listType,
+            searchType: searchType,
+            searchKeyword: searchKeyword,
+            pageNum: 1
+        }, () => {
+            this.loadProductList();
+        })
+    }
+
     render() {
         let tableHeaders = [
             { name: 'ID', width: '10%' },
@@ -86,6 +113,10 @@ class ProductList extends React.Component {
         return (
             <div id="page-wrapper">
                 <PageTitle title="商品管理" />
+                {/* 搜索组件 */}
+                <ListSearch onSearch={(searchType, searchKeyword) => { this.onSearch(searchType, searchKeyword) }} />
+
+                {/* table list 组件 */}
                 <TableList tableHeaders={ tableHeaders }>
                     {
                         this.state.list.map((product, index) => {

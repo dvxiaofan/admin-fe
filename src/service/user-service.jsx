@@ -52,6 +52,17 @@ class User {
             msg: '验证通过'
         };
     }
+
+    // 获取用户列表
+    getUserList(pageNum) {
+        return _mm.request({
+            url: '/manage/user/list.do',
+            type: 'post',
+            data: {
+                pageNum: pageNum
+            }
+        })
+    }
 }
 
 export default User;

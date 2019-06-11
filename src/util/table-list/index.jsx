@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import { type } from 'os';
 
 
 class TableList extends React.Component {
@@ -44,7 +43,7 @@ class TableList extends React.Component {
         let listInfo = (
             <tr>
                 <td colSpan={ this.props.tableHeaders.length } className="text-center">
-                    { this.state.isFirstLoading ? '正在加载商品数据' : '未找到相关商品数据'}
+                    { this.state.isFirstLoading ? '正在加载数据' : '未找到相关数据'}
                 </td>
             </tr>
         );
@@ -54,7 +53,7 @@ class TableList extends React.Component {
         return (
             <div className="row">
                 <div className="col-md-12">
-                    <table className="table table-striped table-borderd">
+                    <table className="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 { tableHeader }
